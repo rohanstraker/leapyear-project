@@ -1,10 +1,8 @@
 //=========Biz Logic=========//
-// var year = 2004;
+var year = 2004;
 var leapYear = function(year) {
     if ((year % 4 === 0) && (year % 100 !== 0) || (year % 400 === 0)) {
     return true;
-  //} else if {
-
   } else {
     return false;
   }
@@ -12,11 +10,21 @@ var leapYear = function(year) {
 
 //=========UI Logic=========//
 $(document).ready(function() {
-  $("#leap-year").submit(function( event ) {
+  $("form#leap-year").submit(function(event) {
+    event.preventDefault();
+//alert(leapYear(year));
+//  $("#result").text(leapYear(year));
+//  event.preventDefault();
+var year = parseInt($("input#year").val());
+var result = leapYear(year);
 
-alert(leapYear(year));
-  $("#result").text(leapYear(year));
-  event.preventDefault();
+$(".year").text("year");
+
+if (!result) {
+  $(".not").text("not");
+} else {
+  $(".not").text("");
+}
   });
 
 });
